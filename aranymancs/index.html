@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="forrasok/favicon.ico">
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+    
+
+
+    <title>Aranymancs</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: gray;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        section:nth-child(odd) {
+            background-color: white;
+        }
+
+        header,
+        footer,
+        section:nth-child(even) {
+            background-color: #eee;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        h2,
+        h3,
+        h4 {
+            color: black;
+        }
+
+        @media screen and (min-width:768px) {
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+        }
+
+        .card {
+            border: 1px gray solid;
+            box-shadow: 0 0 10px #eee;
+        }
+
+        table {
+            width: 100%;
+            line-height: 1em;
+        }
+
+        table,
+        tr {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px gray solid;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="content">
+            <div class="flex">
+                <img src="forrasok/logo.jpg" alt="logó">
+                <div class="szlogen">
+                    <p> „Nem csak otthont, esélyt adunk egy boldogabb életre”</p>
+                </div>
+                <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            </div>
+        </div>
+        <nav id="menu">
+            <ul>
+                <li><a href="#rolunk">Rólunk</a></li>
+                <li><a href="#kisallatok">Kisállataink</a></li>
+                <li><a href="#orokbefogadas">Örökbefogadás</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="rolunk">
+            <div class="content">
+                <h2>Rólunk</h2>
+                <p>
+                    Az Aranymancs Menhely egy nonprofit szemléletű, közösségi összefogásra épülő kisállatmentő
+                    kezdeményezés. Fő tevékenységünk a bajba jutott kutyák és macskák mentése, ideiglenes gondozása,
+                    valamint a felelős örökbefogadás elősegítése.
+                </p>
+                <p>
+                    A mentett kisállatok ellátását elkötelezett önkénteseink végzik, amely magában foglalja az etetést,
+                    a higiénikus környezet biztosítását, a rendszeres mozgatást és a szocializációt. Célunk, hogy az
+                    állatok fizikailag és lelkileg is felkészülten kerüljenek új, szerető otthonukba.
+                </p>
+                <p>
+                    Működésünket adományok és felajánlások teszik lehetővé. Kiemelten fontos számunkra az átláthatóság,
+                    valamint a felelős állattartással kapcsolatos ismeretterjesztés, amelynek egyik eszköze jelen
+                    weboldal is.
+                </p>
+
+
+
+                <div class="grid">
+                    <div class="card">
+                        <h4>Küldetésünk</h4>
+                        <p>A rászoruló kisállatok mentése, gondozása és biztonságos, végleges otthonba juttatása felelős
+                            szemlélettel.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h4>Alapértékeink</h4>
+                        <p> Felelősségtudat, türelem, állatközpontú gondolkodás, valamint korrekt és nyílt kommunikáció.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h4>Hogyan segíthet?</h4>
+                        <p>Önkéntes munkával, ideiglenes befogadással vagy anyagi támogatással egyaránt hozzájárulhat a
+                            munkánkhoz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kisallatok">
+            <div class="content">
+                <div class="filter">
+                    <div>
+                        Város<br>
+                        <select id="varos_select" onchange="loadTablazat()">
+                            <option value="mind" selected>Összes</option>
+                        </select>
+                    </div>
+                    <div>
+                        Kisállat típusa<br>
+                        <select id="kisallat_select" onchange="loadTablazat()">
+                            <option value="mind" selected>Összes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h2>Kisállataink</h2>
+
+                <div class="talalat">Találat: <span id="talalat_szam"></span> kisállatból jelenleg <span id="osszes_orkobefogadhato"></span> örökbefogadható</div>
+                <div class="tabla-container">
+                    <table id="kisallat_tabla">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Név</th>
+                                <th>Kor<br>(hónap)</th>
+                                <th>Nem</th>
+                                <th>Fajta</th>
+                                <th>Hely</th>
+                                <th>Megjegyzés</th>
+                            </tr>
+                        </thead>
+                        <tbody id="kisallat_tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="content">
+                <h2>Örökbefogadás</h2>
+                <p>
+                    A kisállat örökbefogadás hosszú távú felelősséggel járó döntés. Egy kutya vagy tengerimalac nem
+                    átmeneti elfoglaltság, hanem érző lény, amely megfelelő gondoskodást igényel. Célunk, hogy az
+                    örökbefogadás minden fél számára biztonságos és sikeres legyen.
+                </p>
+                <h3>Az örökbefogadás folyamata</h3>
+                <ol>
+                    <li>Válassza ki a megfelelő kisállatot a listából.</li>
+                    <li>Vegye fel velünk a kapcsolatot időpont egyeztetés céljából.</li>
+                    <li>Személyes találkozás és ismerkedés.</li>
+                    <li>Örökbefogadási nyilatkozat kitöltése.</li>
+                    <li>A kisállat hazaköltözése fokozatos beszoktatással.</li>
+                </ol>
+                <div class="card">
+                    <h4>Fontos tudnivaló</h4>
+                    <p>
+                        Kérjük, kizárólag akkor döntsön az örökbefogadás mellett, ha rendelkezik a megfelelő idővel,
+                        anyagi háttérrel és környezettel a kisállat tartásához. Bizonytalanság esetén szívesen segítünk
+                        a döntésben.
+                    </p>
+                </div>
+                <h3>Az örökbefogadást követő időszak</h3>
+                <ul>
+                    <li>Biztosítson nyugodt, stresszmentes környezetet.</li>
+                    <li>Alakítson ki következetes napi rutint.</li>
+                    <li>Pozitív megerősítéssel segítse a beilleszkedést.</li>
+                    <li>Kérdés esetén forduljon hozzánk bizalommal.</li>
+
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="content_flex">
+
+            <img id="footer-logo" src="forrasok/logo.jpg" alt="logó">
+            <div id="lablec_szoveg">
+                Istvánfi-Mészáros Tünde <br>
+                2026
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+
+</html>

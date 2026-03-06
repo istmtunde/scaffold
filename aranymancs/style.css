@@ -1,0 +1,145 @@
+header {
+    background-color: #eee;
+    padding:10px 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.flex img {
+    height: 60px;
+    width: auto;
+}
+
+.szlogen p {
+    margin: 0;
+    font-style: italic;
+    color: #8a4a00;
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #451606;
+    font-weight: bold;
+
+}
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px;
+    margin-bottom: 20px;
+
+}
+
+.card h4 {
+    color: #451606;
+}
+
+.content img {
+    height: 60px;
+    width: auto;
+    float: left;
+    margin-right: 10px;
+}
+
+
+section .content .filter{
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 10px 0; 
+}
+
+section .content .filter select{
+    min-width:150px;
+    height: 40px;
+    margin-top: 6px;
+    padding:0 12px;
+    border:2px solid #c26a12;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size:12px;
+    color: black;
+
+}
+
+footer .content_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 15px;
+    gap: 10px;
+}
+
+#footer-logo{
+    height:40px !important;
+    width: 40px !important;
+    float:none;
+}
+
+
+#lablec_szoveg {
+    text-align: right;
+    color: #451606;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+}
+
+@media (max-width: 767px) {
+
+    .flex {
+        flex-direction: column;
+        text-align: center;
+        gap:10px;
+    }
+
+    nav ul{
+        flex-direction:column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .menu-icon{
+        display: block;
+    }
+
+    .grid{
+       grid-template-columns: 1fr; 
+    }
+
+    #lablec_szoveg {
+        text-align: center;
+        padding-top: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
